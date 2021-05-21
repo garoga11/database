@@ -9,4 +9,4 @@ DB_NAME = os.getenv("DB_NAME")
 client = pymongo.MongoClient(f"
 
                              ")
-db = client.test
+db = client.db-name
