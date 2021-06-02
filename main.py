@@ -40,7 +40,7 @@ def get_kids():
 
 @app.route('/all/names')
 def get_names():
-    response = list(database.db.Badges.find({'name': {"$gte" : "12"}}))
+    response = list(database.db.Badges.find({},{'name': "1"}))
 
     for document in response:
         document["_id"] = str(document['_id'])
