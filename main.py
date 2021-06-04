@@ -31,7 +31,7 @@ def get_name_and_age():
 
 @app.route('/all/kids')
 def get_kids():
-    response = list(database.db.Badges.find({'age': {"$gte" : "12"}}))
+    response = list(database.db.Badges.find({'age': {"$lt" : "21"}}))
 
     for document in response:
         document["_id"] = str(document['_id'])
@@ -40,8 +40,8 @@ def get_kids():
 
 @app.route('/all/names')
 def get_names():
-    response = list(database.db.Badges.find({},{'name': "1"}))
-
+    response = list(database.db.Badges.find({}, {'name':"1"}))
+        
     for document in response:
         document["_id"] = str(document['_id'])
 
