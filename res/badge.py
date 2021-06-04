@@ -32,18 +32,18 @@ class Badge(Resource):
             response[key] = value
 
         database.db.Badges.update_one({'_id':ObjectId(response['_id'])},
-            {'$set':{ 
-                'header_img_url': response['header_img_url'],
-                'profile_picture_url': response['profile_picture_url'],
-                'name': response['name'],
-                'age': response['age'],
-                'city': response['city'],
-                'followers': response['followers'],
-                'likes': response['likes'],
-                'post': response['post'],
-                'posts': response['posts']
-            }})
-
+        {'$set':{ 
+            'header_img_url': response['header_img_url'],
+            'profile_picture_url': response['profile_picture_url'],
+            'name': response['name'],
+            'age': response['age'],
+            'city': response['city'],
+            'followers': response['followers'],
+            'likes': response['likes'],
+            'post': response['post'],
+            'posts': response['posts']
+        }})
+            
         response['_id'] = str(response['_id'])
         return jsonify(response)
 
@@ -57,9 +57,9 @@ class Badge(Resource):
         if by == "_id":
             response = database.db.Badges.find_one({"_id":ObjectId(data)})
         else:
-            response = database.db.Badges.find_one({f"{by}": data})
+            response = database.db.Badges.find_one({f"_id": data})
 
         if response:
             return response
         else:
-            abort(jsonify({"status":404, f"{by}":f"{data} not found"}))
+            abort(jsonify({"status":404, f"{by}":f": {data} not found"}))
