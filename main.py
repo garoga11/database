@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_restful import Api
 from flask_pymongo import pymongo
 from werkzeug.wrappers import response
+from flask_cors import CORS
 import db_config as database
 
 #resourses
@@ -11,6 +12,7 @@ from res.posts import Posts
 
 app = Flask(__name__)
 api = Api(app)
+CORS(app)
 
 @app.route('/all/adults/')
 def get_adults():
