@@ -20,8 +20,7 @@ class Badge(Resource):
             'city': request.json['city'],
             'followers': request.json['followers'],
             'likes': request.json['likes'],
-            'post': request.json['post'],
-            'posts': request.json['posts']
+            'post': request.json['post']
         }).inserted_id)
         return jsonify({"_id":_id})
 
@@ -40,8 +39,7 @@ class Badge(Resource):
             'city': response['city'],
             'followers': response['followers'],
             'likes': response['likes'],
-            'post': response['post'],
-            'posts': response['posts']
+            'post': response['post']
         }})
             
         response['_id'] = str(response['_id'])
